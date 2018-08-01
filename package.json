@@ -1,0 +1,33 @@
+{
+  "name": "abeerfriend",
+  "version": "1.0.0",
+  "description": "An app that lets you share beer tastes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "( cd ./client && yarn start)",
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoosissoos/a-beer-friend.git"
+  },
+  "author": "Daniel Lewis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zoosissoos/a-beer-friend/issues"
+  },
+  "homepage": "https://github.com/zoosissoos/a-beer-friend#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.1",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.2.6",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
+  }
+}
