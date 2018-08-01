@@ -63,6 +63,7 @@ fabric.properties
 
 # dependencies
 /a-beer-friend/node_modules
+/node_modules
 
 # testing
 /coverage
