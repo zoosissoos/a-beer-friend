@@ -10,15 +10,21 @@ import Nav from './Nav'
 import Dashboard from './Dashboard';
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <Landing />
-        <Nav />
-        <Dashboard />
-      </div>
+      <BrowserRouter>
+        <div className="container">
+          <div>
+            <Nav />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/user" component={Dashboard} />
+            {/*<Route path="/surveys/new" component={SurveyNew} />*/}
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+export default connect(null, actions)(App);
