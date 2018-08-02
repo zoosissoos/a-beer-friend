@@ -4,13 +4,13 @@ const cookieSession = require ('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
-// require('./models/User');
+require('./models/User');
 // require('./models/Survey');
-// require('./services/passport');
+require('./services/passport');
 
 
 //initialize mongoose
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
 //initialize express
 const app = express();
@@ -31,15 +31,15 @@ require('./routes/authRoutes')(app);
 // require('./routes/billingRoutes')(app);
 // require('./routes/surveyRoutes')(app);
 
-if (process.env.NODE_ENV === "production"){
-  //express with serve up prodection assets like main.js or main.css file
-  app.use(express.static('client/build'));
-  //express will serve up the index.html file if it doesnt recognize the route.
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
+// if (process.env.NODE_ENV === "production"){
+//   //express with serve up production assets like main.js or main.css file
+//   app.use(express.static('client/build'));
+//   //express will serve up the index.html file if it does not recognize the route.
+//   const path = require('path');
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//   });
+// }
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

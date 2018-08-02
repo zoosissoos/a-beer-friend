@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "client": "( cd ./client && yarn start)",
+    "client": "( cd ./a-beer-friend && yarn start)",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +28,7 @@
     "lodash": "^4.17.10",
     "mongoose": "^5.2.6",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
+    "passport-google-oauth20": "^1.0.0",
+    "redux-form": "^7.4.2"
   }
 }
