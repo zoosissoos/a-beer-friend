@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import ProfileField from './ProfileField';
-// import validateEmails from '../../utils/validateEmails';
+import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
 
 class ProfileForm extends Component {
@@ -27,12 +27,11 @@ class ProfileForm extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
           {this.renderFields()}
-          <Link to="/surveys" className="red btn-flat white-text">
+          <Link to="/user/profile" className="red btn-flat white-text">
             Cancel
           </Link>
           <button type="submit" className="teal btn-flat right white-text">
-            Next
-            <i className="material-icons right">done</i>
+            Review
           </button>
         </form>
       </div>

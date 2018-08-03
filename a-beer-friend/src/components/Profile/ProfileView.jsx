@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect }from "react-redux";
 
 
@@ -18,7 +18,25 @@ class ProfileView extends Component {
           />
         );
       default:
-        return 'Logged in';
+        const { userName, firstName, lastName, email, town, state, zipCode } = this.props.auth;
+        return (
+          <div>
+            <ul>
+              <li>Username: {userName ? userName : "Please provide a username" }</li>
+              <li>First Name: {firstName ? firstName : "Please provide a First Name" }</li>
+              <li>Last Name: {lastName ? lastName : "Please provide a Last Name" }</li>
+              <li>E-mail: {email ? email : "Please provide an E-mail" }</li>
+              <li>Town: {town ? town : "Please provide a Town" }</li>
+              <li>State: {state ? state : "Please provide a State" }</li>
+              <li>Zip Code: {zipCode ? zipCode : "Please provide a Zip Code" }</li>
+            </ul>
+            <div className="fixed-action-btn">
+              <Link to="/user/profile/edit" className="btn-floating btn-large red">
+                <i className="material-icons">add</i>
+              </Link>
+            </div>
+          </div>
+        )
     }
   }
 
