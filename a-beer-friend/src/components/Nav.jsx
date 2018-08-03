@@ -12,11 +12,10 @@ class Nav extends Component {
         return <li><a href="/auth/google">Login with Google</a></li>;
       default:
         return [
-          <li key="1">Beers</li>,
-          <li key="2" style={{ margin: '0 10px'}}>
-            Credits: {this.props.auth.credits}
-          </li>,
-          <li key="3"><a href="/api/logout">Logout</a></li>
+          <li key="1"><a href="/user/beers">Beers</a></li>,
+          <li key="2"><a href="/user/profile">Profile</a></li>,
+          <li key="3"><a href="/user/dashboard">Dashboard</a></li>,
+          <li key="4"><a href="/api/logout">Logout</a></li>
         ];
     }
   }
@@ -30,7 +29,7 @@ class Nav extends Component {
             to={this.props.auth ? '/dashboard' : '/'}
             className="left brand-logo"
           >
-            Email
+            A Beer Friend
           </Link>
           <ul className="right">
             {this.renderContent()}

@@ -1,9 +1,9 @@
-import {Component} from "react";
-import {Redirect} from "react-router-dom";
-import connect from "react-redux/es/connect/connect";
-import React from "react";
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect }from "react-redux";
 
-class Dashboard extends Component {
+
+class ProfileView extends Component {
 
   renderContent() {
     switch (this.props.auth){
@@ -37,4 +37,4 @@ function mapStateToProps({ auth }){
   return { auth };
 }
 
-export default connect(mapStateToProps, null) (Dashboard);
+export default connect(mapStateToProps, null) (ProfileView);
