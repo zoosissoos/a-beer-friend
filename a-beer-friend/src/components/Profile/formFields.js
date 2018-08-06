@@ -1,9 +1,9 @@
 export default [
-  { label: 'Username', name: 'username'},
-  { label: 'First Name', name: 'firstname' },
-  { label: 'Last Name', name: 'lastname' },
+  { label: 'Username', name: 'userName'},
+  { label: 'First Name', name: 'firstName' },
+  { label: 'Last Name', name: 'lastName' },
   { label: 'E-mail', name: 'email' },
   { label: 'Town', name: 'town' },
   { label: 'State', name: 'state' },
-  { label: 'Zip Code', name: 'zipcode' },
+  { label: 'Zip Code', name: 'zipCode' },
 ];

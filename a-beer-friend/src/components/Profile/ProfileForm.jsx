@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ProfileField from './ProfileField';
 import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
+import { connect } from "react-redux";
 
 class ProfileForm extends Component {
 
@@ -25,7 +26,7 @@ class ProfileForm extends Component {
   render () {
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
+        <form onSubmit={this.props.handleSubmit(this.props.onProfileSubmit)}>
           {this.renderFields()}
           <Link to="/user/profile" className="red btn-flat white-text">
             Cancel
@@ -53,8 +54,19 @@ function validate(values) {
   return errors;
 };
 
+
+
+function mapStateToProps({ auth }){
+  return { auth };
+}
+
+ProfileForm = connect(
+  mapStateToProps,
+  null
+)(ProfileForm);
+
 export default reduxForm({
   validate,
-  form: 'surveyForm',
+  form: 'profileForm',
   destroyOnUnmount: false
 }) (ProfileForm);

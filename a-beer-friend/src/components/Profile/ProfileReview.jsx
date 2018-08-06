@@ -32,16 +32,17 @@ const ProfileFormReview = ({ onCancel, formValues, submitProfile, history }) => 
         onClick={() => submitProfile(formValues, history)}
         className="green btn-flat white-text right"
       >
-        Send Survey
-        <i className="material-icons right">email</i>
+        Confirm Changes
       </button>
     </div>
   );
 };
 
 function mapStateToProps(state) {
-  return { formValues: state.form.profileForm.values };
-};
+  return {
+    formValues: state.form.profileForm.values
+  };
+}
 
 export default connect(mapStateToProps, actions)(withRouter(ProfileFormReview));
 

@@ -18,7 +18,7 @@ class ProfileView extends Component {
           />
         );
       default:
-        const { userName, firstName, lastName, email, town, state, zipCode } = this.props.auth;
+        const { userName, firstName, lastName, email, town, state, zipCode } = this.props.auth.userInfo;
         return (
           <div>
             <ul>
@@ -31,8 +31,8 @@ class ProfileView extends Component {
               <li>Zip Code: {zipCode ? zipCode : "Please provide a Zip Code" }</li>
             </ul>
             <div className="fixed-action-btn">
-              <Link to="/user/profile/edit" className="btn-floating btn-large red">
-                <i className="material-icons">add</i>
+              <Link to="/user/profile/edit" className="red btn-flat white-text">
+                Edit
               </Link>
             </div>
           </div>

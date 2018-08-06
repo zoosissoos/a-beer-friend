@@ -13,8 +13,8 @@ export const fetchUser = () => async dispatch => {
 
 //updates profile
 export const submitProfile = (values, history) => async dispatch => {
-  const res = await axios.post('/api/profile', values);
+  const res = await axios.post('/api/profile/update', values);
 
-  history.push('/profile');
+  history.push('/user/profile');
   dispatch({ type: FETCH_USER, payload: res.data });
 };

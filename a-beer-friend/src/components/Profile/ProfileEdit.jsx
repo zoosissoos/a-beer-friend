@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import ProfileForm from './ProfileForm';
-import ProfileReview from './ProfileView';
+import ProfileReview from './ProfileReview';
 
 
 class ProfileEdit extends Component {
@@ -18,7 +18,7 @@ class ProfileEdit extends Component {
 
     return (
       <ProfileForm
-        onSurveySubmit={() => this.setState({ showFormReview: true })}
+        onProfileSubmit={() => this.setState({ showFormReview: true })}
       />
     );
   }
@@ -30,7 +30,7 @@ class ProfileEdit extends Component {
       </div>
     );
   }
-};
+}
 
 export default reduxForm({
   form: 'profileForm'

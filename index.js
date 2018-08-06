@@ -29,7 +29,7 @@ app.use(passport.session());
 //routes
 require('./routes/authRoutes')(app);
 // require('./routes/billingRoutes')(app);
-// require('./routes/surveyRoutes')(app);
+require('./routes/profileRoutes')(app);
 
 // if (process.env.NODE_ENV === "production"){
 //   //express with serve up production assets like main.js or main.css file
