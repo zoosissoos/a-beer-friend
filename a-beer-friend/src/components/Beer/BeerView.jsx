@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import * as actions from '../../actions';
 import { connect }from "react-redux";
 
 
 class BeerView extends Component {
+
+  componentDidMount() {
+    this.props.fetchBeer();
+  }
+
+
+  renderBeerOverview() {
+    return (
+      <div>
+        Test
+      </div>
+    )
+  }
 
   renderContent() {
     switch (this.props.auth){
@@ -18,11 +32,12 @@ class BeerView extends Component {
           />
         );
       default:
-        const { userName, firstName, lastName, email, town, state, zipCode } = this.props.auth.userInfo;
+        const { firstName } = this.props.auth.userInfo;
         return (
           <div>
             <div>
               <p> Hello, {firstName ? firstName : "Guest."}. Here are your logged beers.</p>
+              { this.renderBeerOverview() }
             </div>
             <div className="fixed-action-btn">
               <Link to="/user/beers/add" className="red btn-flat white-text">
@@ -49,4 +64,4 @@ function mapStateToProps({ auth }){
   return { auth };
 }
 
-export default connect(mapStateToProps, null) (BeerView);
+export default connect(mapStateToProps, actions) (BeerView);

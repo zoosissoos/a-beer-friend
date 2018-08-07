@@ -27,7 +27,7 @@ class BeerForm extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit(this.props.onBeerSubmit)}>
           {this.renderFields()}
-          <Link to="/user/profile" className="red btn-flat white-text">
+          <Link to="/user/beers" className="red btn-flat white-text">
             Cancel
           </Link>
           <button type="submit" className="teal btn-flat right white-text">
@@ -41,18 +41,13 @@ class BeerForm extends Component {
 
 function validate(values) {
   const errors = {};
-
-
   _.each(formFields, ({ name }) => {
     if (!values[name]){
       errors[name] = 'You must provide a value!';
     }
   });
-
   return errors;
 }
-
-
 
 function mapStateToProps({ auth }){
   return { auth };

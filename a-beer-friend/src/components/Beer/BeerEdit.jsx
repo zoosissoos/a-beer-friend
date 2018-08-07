@@ -18,7 +18,7 @@ class BeerEdit extends Component {
 
     return (
       <BeerForm
-        onProfileSubmit={() => this.setState({ showFormReview: true })}
+        onBeerSubmit={() => this.setState({ showFormReview: true })}
       />
     );
   }
