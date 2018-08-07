@@ -5,11 +5,12 @@ import * as actions from '../actions';
 
 import './App.css';
 
-import Landing from './Landing/Landing'
-import Nav from './Nav'
+import Landing from './Landing/Landing';
+import Nav from './Nav';
 import Dashboard from './Dashboard';
-import ProfileView from './Profile/ProfileView'
-import ProfileEdit from './Profile/ProfileEdit'
+import BeerView from './Beer/BeerView';
+import ProfileView from './Profile/ProfileView';
+import ProfileEdit from './Profile/ProfileEdit';
 
 class App extends Component {
 
@@ -24,6 +25,7 @@ class App extends Component {
           <div>
             <Nav />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/user/beers" component={BeerView} />
             <Route exact path="/user/profile" component={ProfileView} />
             <Route exact path="/user/profile/edit" component={ProfileEdit} />
             <Route exact path="/user/dashboard" component={Dashboard} />

@@ -22,7 +22,7 @@ class ProfileView extends Component {
         return (
           <div>
             <ul>
-              <li>Username: {userName ? userName : "Please provide a username" }</li>
+              <li>Username: { userName ? userName : "Please provide a username" }</li>
               <li>First Name: {firstName ? firstName : "Please provide a First Name" }</li>
               <li>Last Name: {lastName ? lastName : "Please provide a Last Name" }</li>
               <li>E-mail: {email ? email : "Please provide an E-mail" }</li>
