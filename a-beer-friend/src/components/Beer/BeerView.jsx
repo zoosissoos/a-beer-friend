@@ -3,21 +3,10 @@ import { Redirect, Link } from 'react-router-dom';
 import * as actions from '../../actions';
 import { connect }from "react-redux";
 
+import BeerList from './BeerList';
+
 
 class BeerView extends Component {
-
-  componentDidMount() {
-    this.props.fetchBeer();
-  }
-
-
-  renderBeerOverview() {
-    return (
-      <div>
-        Test
-      </div>
-    )
-  }
 
   renderContent() {
     switch (this.props.auth){
@@ -37,7 +26,7 @@ class BeerView extends Component {
           <div>
             <div>
               <p> Hello, {firstName ? firstName : "Guest."}. Here are your logged beers.</p>
-              { this.renderBeerOverview() }
+              { <BeerList />}
             </div>
             <div className="fixed-action-btn">
               <Link to="/user/beers/add" className="red btn-flat white-text">

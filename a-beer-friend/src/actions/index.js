@@ -20,9 +20,9 @@ export const submitProfile = (values, history) => async dispatch => {
 };
 
 //fetches beer for current logged in user
-export const fetchBeer = (values, history) => async dispatch => {
-  const res = await axios.get('/api/current_user/beer', values);
-  console.log(res.data)
+export const fetchBeer = () => async dispatch => {
+  const res = await axios.get('/api/current_user/beer');
+  console.log('fetch beer action', res.data)
   dispatch({ type: FETCH_BEER, payload: res.data });
 };
 

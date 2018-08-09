@@ -8,10 +8,9 @@ module.exports = app => {
 
   //returns the beers of the current logged in user
   app.get('/api/current_user/beer', requireLogin, async (req, res) => {
-    const result = await User.findById(req.user._id).populate('userBeers');
-
-    console.log(result.userBeers);
-    res.send(result.userBeers)
+    const user = await User.findOne({_id: req.user._id}).populate('userBeers');
+    console.log(user.userBeers)
+    res.send(user.userBeers)
   });
 
   //adds new beer to database
@@ -33,7 +32,7 @@ module.exports = app => {
       { $push: {userBeers: newBeer._id} },
       { upsert: true, new: true }
     );
-    console.log(result);
-    res.send(result)
+    //sends updated user beer list to client
+    res.send(result.userBeers)
   })
 };
