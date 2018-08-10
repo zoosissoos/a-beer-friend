@@ -5,7 +5,6 @@ import { connect }from "react-redux";
 
 import BeerList from './BeerList';
 
-
 class BeerView extends Component {
 
   renderContent() {
@@ -24,7 +23,7 @@ class BeerView extends Component {
         const { firstName } = this.props.auth.userInfo;
         return (
           <div>
-            <div>
+            <div style={styles.textContainer}>
               <p> Hello, {firstName ? firstName : "Guest."}. Here are your logged beers.</p>
               { <BeerList />}
             </div>
@@ -52,5 +51,11 @@ class BeerView extends Component {
 function mapStateToProps({ auth }){
   return { auth };
 }
+
+const styles = {
+  textContainer: {
+    padding: '3rem'
+  }
+};
 
 export default connect(mapStateToProps, actions) (BeerView);

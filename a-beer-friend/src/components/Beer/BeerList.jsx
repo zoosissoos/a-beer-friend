@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchBeer } from '../../actions';
 import { connect } from "react-redux";
 
@@ -11,10 +11,10 @@ class BeerList extends Component {
   }
 
   renderBeers() {
-    return this.props.beers.map(beer => {
+    return this.props.beers.map((beer, index) => {
       if(beer.beerName) {
         return (
-          <li style={styles.listItem} key={ beer._id }>
+          <li style={index === 0 ? styles.listItemFirst : styles.listItem } key={ beer._id }>
             <div style={styles.listDetails} >
               <h5 >{beer.beerName}</h5>
             </div>
@@ -62,8 +62,18 @@ const styles = {
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    border: '2px solid',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    padding: '3rem'
+  },
+  listItemFirst: {
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'row',
+    padding: '1rem',
+    justifyContent: 'space-between',
+    alignContent: 'space-between',
+    border: 'solid black 1px',
+    backgroundColor: '#D1CEC9'
   },
   listItem: {
     boxSizing: 'border-box',
@@ -72,7 +82,10 @@ const styles = {
     padding: '1rem',
     justifyContent: 'space-between',
     alignContent: 'space-between',
-    border: 'solid black 1px'
+    borderBottom: 'solid black 1px',
+    borderRight: 'solid black 1px',
+    borderLeft: 'solid black 1px',
+    backgroundColor: '#D1CEC9'
   },
   listDetails: {
     width:'45%',

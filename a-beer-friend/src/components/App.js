@@ -22,9 +22,8 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="container">
-          <div>
-            <Nav />
+        <div >
+            <Nav style={{width: '100%'}}/>
             <Route exact path="/" component={Landing} />
             <Route exact path="/user/dashboard" component={Dashboard} />
 
@@ -35,8 +34,6 @@ class App extends Component {
             {/*Profile Routes*/}
             <Route exact path="/user/profile" component={ProfileView} />
             <Route exact path="/user/profile/edit" component={ProfileEdit} />
-
-          </div>
         </div>
       </BrowserRouter>
     );
