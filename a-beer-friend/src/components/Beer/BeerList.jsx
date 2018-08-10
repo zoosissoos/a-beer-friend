@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { fetchBeer } from '../../actions';
+import { fetchBeer, deleteBeer } from '../../actions';
 import { connect } from "react-redux";
 
+
+// TODO make these buttons look prettier
 
 class BeerList extends Component {
 
@@ -29,9 +30,11 @@ class BeerList extends Component {
               <a href="#" >
                 <i className="material-icons" style={styles.actionButton}>send</i>
               </a>
-              <a href="#" style={styles.actionButton}>
-                <i className="material-icons" style={{color: 'red'}}>delete_forever</i>
-              </a>
+              <button
+                onClick={() => this.props.deleteBeer(beer._id, this.props.history)}
+                style={styles.actionButton}>
+                  <i className="material-icons" style={{color: 'red'}}>delete_forever</i>
+              </button>
             </div>
           </li>
         )
@@ -105,6 +108,6 @@ function mapStateToProps({ beers }){
   return { beers };
 }
 
-export default connect(mapStateToProps, { fetchBeer }) (BeerList);
+export default connect(mapStateToProps, { fetchBeer, deleteBeer }) (BeerList);
 
 

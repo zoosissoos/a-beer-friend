@@ -9,7 +9,7 @@ module.exports = app => {
   //returns the beers of the current logged in user
   app.get('/api/current_user/beer', requireLogin, async (req, res) => {
     const user = await User.findOne({_id: req.user._id}).populate('userBeers');
-    console.log(user.userBeers)
+    console.log(user.userBeers);
     res.send(user.userBeers)
   });
 
@@ -34,5 +34,10 @@ module.exports = app => {
     );
     //sends updated user beer list to client
     res.send(result.userBeers)
+  });
+
+  app.delete('/api/current_user/beer/delete', requireLogin, async (req, res) => {
+    const result = Beer.findOneAndDelete()
+    // TODO connect this to the database for functionality
   })
 };
