@@ -20,7 +20,7 @@ class BeerList extends Component {
               <p>
                 Style: {beer.beerStyle}
                 <br />
-                Date added: {beer.beerStyle}
+                Date added: {beer.createdOn}
               </p>
             </div>
             <div style={styles.actionButtonContainer}>
