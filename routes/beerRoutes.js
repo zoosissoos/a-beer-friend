@@ -37,7 +37,29 @@ module.exports = app => {
   });
 
   app.delete('/api/current_user/beer/delete', requireLogin, async (req, res) => {
-    const result = Beer.findOneAndDelete()
-    // TODO connect this to the database for functionality
+    const { beerId } = req.body;
+
+    //deletes beer from beers collection
+    const result = await Beer.findOneAndRemove(
+      { _id: beerId},
+      async (err, res) => {
+        if (err) throw err;
+        return res
+      }
+    );
+    //deletes user reference to beerId
+    const deleteRef = await User.update(
+      { 'userBeers' : beerId },
+      { '$pull' : {'userBeers' : beerId } },
+      async (err, res) => {
+        if (err) throw err;
+        return res;
+      }
+    );
+    //sends updated user beers
+
+    //TODO fix so that does not send the incorrect data over
+    console.log(deleteRef.userBeers);
+    res.send(deleteRef.userBeers)
   })
 };

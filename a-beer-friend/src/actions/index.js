@@ -34,11 +34,12 @@ export const submitBeer = (values, history) => async dispatch => {
   dispatch({ type: FETCH_BEER, payload: res.data });
 };
 
-export const deleteBeer = (values, history) => async dispatch => {
-  console.log('touched delete', values)
-  const res = await axios.delete('/api/current_user/beer/delete', values);
-  console.log('delete beer action', res.data);
+export const deleteBeer = (value, history) => async dispatch => {
+  console.log('touched delete', value)
+  const res = await axios.delete('/api/current_user/beer/delete', {
+    data:{beerId: value}
+  });
 
-  history.push('/user/beers');
+  console.log('delete beer action', res.data);
   dispatch({ type: FETCH_BEER, payload: res.data });
 };

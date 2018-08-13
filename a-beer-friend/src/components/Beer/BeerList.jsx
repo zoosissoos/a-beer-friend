@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { fetchBeer, deleteBeer } from '../../actions';
 import { connect } from "react-redux";
 
-
-// TODO make these buttons look prettier
-
 class BeerList extends Component {
 
   componentDidMount() {
@@ -27,18 +24,26 @@ class BeerList extends Component {
               </p>
             </div>
             <div style={styles.actionButtonContainer}>
-              <a href="#" >
-                <i className="material-icons" style={styles.actionButton}>send</i>
-              </a>
+              <button
+                // TODO add link to beer details page
+                style={styles.actionButton}
+              >
+                <i className="material-icons" style={{color:'green'}}>send</i>
+              </button>
               <button
                 onClick={() => this.props.deleteBeer(beer._id, this.props.history)}
-                style={styles.actionButton}>
-                  <i className="material-icons" style={{color: 'red'}}>delete_forever</i>
+                style={styles.actionButton}
+              >
+                <i className="material-icons" style={{color: 'red'}}>delete_forever</i>
               </button>
             </div>
           </li>
         )
       }
+      return (
+        // TODO fix so that beers will have default name when entered into database
+        "Error in Rendering beer"
+      )
     })
   }
 
@@ -101,6 +106,14 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-around'
+  },
+  actionButton: {
+    background: 'none',
+    border: 'none',
+    padding: '0',
+    font: 'inherit',
+    cursor: 'pointer',
+    outline: 'inherit'
   }
 };
 
