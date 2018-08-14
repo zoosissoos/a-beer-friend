@@ -8,19 +8,35 @@ class BeerList extends Component {
     this.props.fetchBeer();
   }
 
-  renderBeers() {
+  //conditionally renders delete button if the user signed in is the creator of the beer.
+  //TODO create profiles for other users to view their beers.
+  renderDelete(beerCreator, user) {
+    if(beerCreator.createdBy === user){
+      return(
+        <button
+          onClick={() => this.props.deleteBeer(beerCreator._id, this.props.history)}
+          style={ styles.actionButton }
+        >
+          <i className="material-icons" style={{color: 'red'}}>delete_forever</i>
+        </button>
+      )
+    }
+  }
+
+  //renders the beer list items
+  renderBeerListItems() {
     return this.props.beers.map((beer, index) => {
       if(beer.beerName) {
         return (
-          <li style={index === 0 ? styles.listItemFirst : styles.listItem } key={ beer._id }>
-            <div style={styles.listDetails} >
-              <h5 >{beer.beerName}</h5>
+          <li style={ index === 0 ? styles.listItemFirst : styles.listItem } key={ beer._id }>
+            <div style={ styles.listDetails } >
+              <h5 >{ beer.beerName }</h5>
             </div>
             <div style={styles.listDetails}>
               <p>
-                Style: {beer.beerStyle}
+                Style: { beer.beerStyle }
                 <br />
-                Date added: {beer.createdOn}
+                Date added: { beer.createdOn }
               </p>
             </div>
             <div style={styles.actionButtonContainer}>
@@ -30,34 +46,27 @@ class BeerList extends Component {
               >
                 <i className="material-icons" style={{color:'green'}}>send</i>
               </button>
-              <button
-                onClick={() => this.props.deleteBeer(beer._id, this.props.history)}
-                style={styles.actionButton}
-              >
-                <i className="material-icons" style={{color: 'red'}}>delete_forever</i>
-              </button>
+              { this.renderDelete(beer, this.props.auth._id) }
             </div>
           </li>
         )
       }
-      return (
-        // TODO fix so that beers will have default name when entered into database
-        "Error in Rendering beer"
-      )
+      return (null);
     })
   }
 
   render() {
+    console.log('testing auth', this.props.auth);
     console.log('testing beers', this.props.beers);
     switch (this.props.beers){
       case null:
         return 'Loading';
-      case (this.props.beers.length < 1):
+      case (this.props.beers && this.props.beers.length < 1):
         return 'There are no beers logged.';
       default:
         return (
           <ul style = {styles.listContainer}>
-            { this.renderBeers() }
+            { this.renderBeerListItems() }
           </ul>
         )
     }
@@ -117,8 +126,8 @@ const styles = {
   }
 };
 
-function mapStateToProps({ beers }){
-  return { beers };
+function mapStateToProps({ beers, auth }){
+  return { beers, auth };
 }
 
 export default connect(mapStateToProps, { fetchBeer, deleteBeer }) (BeerList);
