@@ -8,6 +8,16 @@ class BeerList extends Component {
     this.props.fetchBeer();
   }
 
+  //formats the dates on the beer list as "mm dd yyyy"
+  renderDate(date){
+    const beerDate = new Date(date);
+    const month = beerDate.getMonth();
+    const day = beerDate.getDay();
+    const year = beerDate.getFullYear()
+
+    return `${month}/${day}/${year}`
+  }
+
   //conditionally renders delete button if the user signed in is the creator of the beer.
   //TODO create profiles for other users to view their beers.
   renderDelete(beerCreator, user) {
@@ -36,7 +46,7 @@ class BeerList extends Component {
               <p>
                 Style: { beer.beerStyle }
                 <br />
-                Date added: { beer.createdOn }
+                Date added: { this.renderDate(beer.createdOn) }
               </p>
             </div>
             <div style={styles.actionButtonContainer}>
@@ -56,8 +66,6 @@ class BeerList extends Component {
   }
 
   render() {
-    console.log('testing auth', this.props.auth);
-    console.log('testing beers', this.props.beers);
     switch (this.props.beers){
       case null:
         return 'Loading';

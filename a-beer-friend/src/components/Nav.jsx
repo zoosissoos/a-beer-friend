@@ -23,11 +23,12 @@ class Nav extends Component {
   render(){
     console.log('header props: ', this.props);
     return(
-      <nav>
+      <nav style={{backgroundColor: '#0074D9'}}>
         <div className="nav-wrapper">
           <Link
             to={this.props.auth ? '/dashboard' : '/'}
             className="left brand-logo"
+            style={{marginLeft: '1rem'}}
           >
             A Beer Friend
           </Link>

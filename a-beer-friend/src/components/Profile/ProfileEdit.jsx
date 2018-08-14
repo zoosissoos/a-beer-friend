@@ -25,12 +25,19 @@ class ProfileEdit extends Component {
 
   render () {
     return (
-      <div>
+      <div style={styles.formContainer}>
         {this.renderContent()}
       </div>
     );
   }
 }
+
+const styles = {
+  formContainer: {
+    padding: '5rem',
+    margin: '0 auto'
+  }
+};
 
 export default reduxForm({
   form: 'profileForm'

@@ -21,8 +21,8 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter >
-        <div >
+      <BrowserRouter>
+        <div>
             <Nav style={{width: '100%'}}/>
             <Route exact path="/" component={Landing} />
             <Route exact path="/user/dashboard" component={Dashboard} />
